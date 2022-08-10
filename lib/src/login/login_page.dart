@@ -50,30 +50,59 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _buttonLogin() {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text('INGRESAR'),
-    );
+    return Container(
+        width: double.infinity,
+        margin: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
+        child: ElevatedButton(
+          onPressed: () {},
+          child: Text('INGRESAR'),
+          style: ElevatedButton.styleFrom(
+              primary: MyColors.primaryColor,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)),
+              padding: EdgeInsets.symmetric(vertical: 15)),
+        ));
   }
 
   Widget _textFieldPassword() {
-    return TextField(
-      decoration: InputDecoration(hintText: 'Contraseña'),
-    );
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+        decoration: BoxDecoration(
+            color: MyColors.primaryOpacityColor,
+            borderRadius: BorderRadius.circular(30)),
+        child: TextField(
+          decoration: InputDecoration(
+              hintText: 'Contraseña',
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.all(15),
+              prefixIcon: Icon(Icons.lock, color: MyColors.primaryColor)),
+        ));
   }
 
   Widget _textFieldEmail() {
-    return TextField(
-      decoration: InputDecoration(hintText: 'Correo Electronico'),
-    );
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 50, vertical: 5),
+        decoration: BoxDecoration(
+            color: MyColors.primaryOpacityColor,
+            borderRadius: BorderRadius.circular(30)),
+        child: TextField(
+          decoration: InputDecoration(
+              hintText: 'Correo Electronico',
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.all(15),
+              prefixIcon: Icon(Icons.email, color: MyColors.primaryColor)),
+        ));
   }
 
   Widget _imageBanner() {
-    return Image.asset(
-      'assets/img/delivery.png',
-      width: 200,
-      height: 200,
-    );
+    return Container(
+        margin: EdgeInsets.only(
+            top: 100, bottom: MediaQuery.of(context).size.height * 0.22),
+        child: Image.asset(
+          'assets/img/delivery.png',
+          width: 200,
+          height: 200,
+        ));
   }
 
   /*@override
