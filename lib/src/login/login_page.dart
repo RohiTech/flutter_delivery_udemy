@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery_udemy/src/utils/my_colors.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,18 +18,32 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         body: Container(
       width: double.infinity,
-      child: Column(
+      child: Stack(
         //mainAxisAlignment: MainAxisAlignment.center,
         //crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _imageBanner(),
-          _textFieldEmail(),
-          _textFieldPassword(),
-          _buttonLogin(),
-          _textDontHaveAccount()
+          Positioned(top: -80, left: -100, child: _circleLogin()),
+          Positioned(child: _textLogin(), top: 60, left: 25),
+          Column(children: [
+            //_imageBanner(),
+            _lottieAnimation(),
+            _textFieldEmail(),
+            _textFieldPassword(),
+            _buttonLogin(),
+            _textDontHaveAccount()
+          ])
         ],
       ),
     ));
+  }
+
+  Widget _lottieAnimation() {
+    return Container(
+      margin: EdgeInsets.only(
+          top: 150, bottom: MediaQuery.of(context).size.height * 0.17),
+      child: Lottie.asset('assets/json/delivery.json',
+          width: 350, height: 200, fit: BoxFit.fill),
+    );
   }
 
   Widget _textDontHaveAccount() {
@@ -92,6 +107,22 @@ class _LoginPageState extends State<LoginPage> {
               contentPadding: EdgeInsets.all(15),
               prefixIcon: Icon(Icons.email, color: MyColors.primaryColor)),
         ));
+  }
+
+  Widget _textLogin() {
+    return Text('LOGIN',
+        style: TextStyle(
+            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22));
+  }
+
+  Widget _circleLogin() {
+    return Container(
+      width: 240,
+      height: 230,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(100),
+          color: MyColors.primaryColor),
+    );
   }
 
   Widget _imageBanner() {
