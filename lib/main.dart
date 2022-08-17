@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery_udemy/src/login/login_page.dart';
+import 'package:flutter_delivery_udemy/src/register/register_page.dart';
 import 'package:flutter_delivery_udemy/src/utils/my_colors.dart';
 
 void main() {
@@ -20,8 +21,13 @@ class _MyAppState extends State<MyApp> {
       title: 'Delivery App Flutter',
       debugShowCheckedModeBanner: false,
       initialRoute: 'login',
-      routes: {'login': (BuildContext context) => LoginPage()},
-      theme: ThemeData(primaryColor: MyColors.primaryColor),
+      routes: {
+        'login': (BuildContext context) => LoginPage(),
+        'register': (BuildContext context) => RegisterPage(),
+      },
+      theme: ThemeData(
+          //fontFamily: 'NimbusSans',
+          primaryColor: MyColors.primaryColor),
       //theme: ThemeData(primaryColor: Colors.deepOrange),
     );
   }

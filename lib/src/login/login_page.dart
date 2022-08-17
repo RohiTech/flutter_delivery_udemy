@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_delivery_udemy/src/login/login_controller.dart';
 import 'package:flutter_delivery_udemy/src/utils/my_colors.dart';
 import 'package:lottie/lottie.dart';
 
@@ -10,11 +12,27 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  LoginController _con = new LoginController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    //print('INIT STATE');
+
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      //print('SCHEDULER BINDING');
+      _con.init(context);
+    });
+  }
+
   // String _name; // privada
   // String name; // publica
 
   @override
   Widget build(BuildContext context) {
+    //print('METODO BUILD');
+
     return Scaffold(
         body: Container(
       width: double.infinity,
@@ -55,11 +73,17 @@ class _LoginPageState extends State<LoginPage> {
           style: TextStyle(color: MyColors.primaryColor),
         ),
         SizedBox(width: 7),
-        Text(
-          'Registrate',
-          style: TextStyle(
-              fontWeight: FontWeight.bold, color: MyColors.primaryColor),
-        )
+        GestureDetector(
+          onTap: _con.goToRegisterPage,
+          /*onTap: () {
+            Navigator.pushNamed(context, 'register');
+          },*/
+          child: Text(
+            'Registrate',
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: MyColors.primaryColor),
+          ),
+        ),
       ],
     );
   }
@@ -112,7 +136,10 @@ class _LoginPageState extends State<LoginPage> {
   Widget _textLogin() {
     return Text('LOGIN',
         style: TextStyle(
-            color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22));
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            fontFamily: 'NimbusSans'));
   }
 
   Widget _circleLogin() {
