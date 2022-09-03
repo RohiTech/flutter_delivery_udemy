@@ -42,14 +42,15 @@ class _LoginPageState extends State<LoginPage> {
         children: [
           Positioned(top: -80, left: -100, child: _circleLogin()),
           Positioned(child: _textLogin(), top: 60, left: 25),
-          Column(children: [
+          SingleChildScrollView(
+              child: Column(children: [
             //_imageBanner(),
             _lottieAnimation(),
             _textFieldEmail(),
             _textFieldPassword(),
             _buttonLogin(),
             _textDontHaveAccount()
-          ])
+          ]))
         ],
       ),
     ));
